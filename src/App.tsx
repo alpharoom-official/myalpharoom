@@ -52,7 +52,7 @@ const App: React.FC = () => {
       <div style={boxRegoleStyle}>
         <h2 style={{ color: '#ff0000', marginBottom: '20px' }}>⚠️ REGOLAMENTO OBBLIGATORIO</h2>
         <ul style={{ textAlign: 'left', lineHeight: '1.6', marginBottom: '25px', color: '#ccc' }}>
-          <li>L'utente dichiara di avere almeno 18 anni.</li>
+          <li>L'utente dichiara di avere almeno 18 anni, o 14 anni ma con consenso dei genitori.</li>
           <li>Ogni azione è sotto la propria responsabilità civile e penale.</li>
           <li>È vietato registrare o diffondere contenuti delle stanze.</li>
           <li>Il sito non risponde dell'uso improprio della piattaforma.</li>
