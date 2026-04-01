@@ -1,5 +1,6 @@
 {
-  "name": "vite-react",
+  "homepage": "https://alpharoom-official.github.io/myalpharoom",
+  "name": "myalpharoom",
   "private": true,
   "version": "0.0.0",
   "type": "module",
