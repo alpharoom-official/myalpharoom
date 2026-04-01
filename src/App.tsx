@@ -1,80 +1,97 @@
 import React, { useState } from 'react';
 
-export default function App() {
-  const [accettato, setAccettato] = useState(false);
+const App: React.FC = () => {
+  const [accetto, setAccetto] = useState(false);
 
   const avvisoInArrivo = (stanza: string) => {
-    alert(`Stai entrando nella ${stanza}. Ricorda: la Beta ufficiale aprirà questo weekend. Per ora l'accesso è limitato ai test tecnici.`);
-    // Qui poi metteremo il link reale Jitsi: window.open("https://meet.jit.si/MyAlphaRoom_" + stanza, "_blank");
+    alert(`Accesso alla stanza ${stanza} in preparazione per il weekend. Verifica la tua connessione Alpha.`);
   };
 
+  const containerStyle: React.CSSProperties = {
+    backgroundColor: '#0a0a0a',
+    color: '#fff',
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'Arial, sans-serif',
+    padding: '20px',
+    textAlign: 'center'
+  };
+
+  const boxRegoleStyle: React.CSSProperties = {
+    backgroundColor: '#1a1a1a',
+    border: '2px solid #ff0000',
+    padding: '30px',
+    borderRadius: '15px',
+    maxWidth: '600px',
+    marginBottom: '40px',
+    boxShadow: '0 0 20px rgba(255, 0, 0, 0.2)'
+  };
+
+  const buttonStyle = (isOrange: boolean): React.CSSProperties => ({
+    backgroundColor: !accetto ? '#333' : (isOrange ? '#ff6600' : '#ff0000'),
+    color: '#fff',
+    padding: '15px 30px',
+    border: 'none',
+    borderRadius: '8px',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    cursor: accetto ? 'pointer' : 'not-allowed',
+    margin: '10px',
+    transition: '0.3s',
+    opacity: accetto ? 1 : 0.5
+  });
+
   return (
-    <div style={{ backgroundColor: '#1a1a1a', minHeight: '100vh', color: 'white', textAlign: 'center', padding: '40px 20px', fontFamily: 'sans-serif' }}>
-      
-      {/* LOGO */}
-      <h1 style={{ color: '#ffcc00', fontSize: '3.5rem', margin: '0' }}>MYALPHAROOM.COM</h1>
-      <div style={{ backgroundColor: '#ffcc00', color: 'black', display: 'inline-block', padding: '5px 15px', fontWeight: 'bold', borderRadius: '5px', marginTop: '10px', fontSize: '0.9rem' }}>
-        🚀 BETA TEST PHASE - LANCIO PREVISTO: VENERDÌ/SABATO
-      </div>
+    <div style={containerStyle}>
+      <h1 style={{ color: '#ffcc00', fontSize: '3rem', marginBottom: '10px' }}>MY ALPHA ROOM</h1>
+      <p style={{ fontSize: '1.2rem', marginBottom: '30px' }}>PROGETTO IN FASE BETA - ACCESSO RISERVATO</p>
 
-      {/* BOX LEGALE - LA CORAZZA */}
-      <div style={{ maxWidth: '800px', margin: '40px auto', textAlign: 'left', backgroundColor: '#2a2a2a', padding: '25px', borderRadius: '15px', border: '1px solid #444' }}>
-        <h2 style={{ color: '#ff4444', textAlign: 'center', marginTop: 0 }}>⚠️ DISCLAIMER & REGOLE DI ACCESSO</h2>
-        <div style={{ fontSize: '0.9rem', color: '#ccc', height: '150px', overflowY: 'scroll', padding: '10px', backgroundColor: '#1a1a1a', borderRadius: '5px', marginBottom: '20px', border: '1px solid #333' }}>
-          <p><strong>1. Responsabilità:</strong> L'utente è l'unico responsabile del proprio comportamento e dei contenuti trasmessi in videochat. MyAlphaRoom non si assume responsabilità per azioni di terzi.</p>
-          <p><strong>2. Minori (14-17):</strong> L'accesso alla Videochat Giovani richiede il consenso dei genitori o dei tutori legali. Entrando, dichiari di avere l'autorizzazione necessaria.</p>
-          <p><strong>3. Tolleranza Zero:</strong> Sono severamente vietati insulti, bullismo, contenuti espliciti o illegali. Il mancato rispetto comporta il BAN immediato e la segnalazione alle autorità se necessario.</p>
-          <p><strong>4. Privacy:</strong> Non è consentito registrare lo schermo o diffondere immagini altrui senza consenso esplicito.</p>
-          <p><strong>5. Giurisdizione:</strong> Il servizio opera secondo i protocolli di sicurezza e privacy stabiliti per la fase Beta.</p>
-        </div>
-
-        <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '1.1rem', color: '#ffcc00' }}>
+      <div style={boxRegoleStyle}>
+        <h2 style={{ color: '#ff0000', marginBottom: '20px' }}>⚠️ REGOLAMENTO OBBLIGATORIO</h2>
+        <ul style={{ textAlign: 'left', lineHeight: '1.6', marginBottom: '25px', color: '#ccc' }}>
+          <li>L'utente dichiara di avere almeno 18 anni.</li>
+          <li>Ogni azione è sotto la propria responsabilità civile e penale.</li>
+          <li>È vietato registrare o diffondere contenuti delle stanze.</li>
+          <li>Il sito non risponde dell'uso improprio della piattaforma.</li>
+        </ul>
+        
+        <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '1.1rem' }}>
           <input 
             type="checkbox" 
-            checked={accettato} 
-            onChange={() => setAccettato(!accettato)} 
-            style={{ width: '20px', height: '20px' }}
+            checked={accetto} 
+            onChange={() => setAccetto(!accetto)} 
+            style={{ marginRight: '10px', transform: 'scale(1.5)' }}
           />
-          Dichiaro di avere l'età corretta e accetto integralmente le regole.
+          DICHIARO DI ESSERE MAGGIORENNE E ACCETTO LE REGOLE
         </label>
       </div>
-      
-      {/* SEZIONE STANZE (SBLOCCATE SOLO SE ACCETTI) */}
-      <div style={{ opacity: accettato ? 1 : 0.4, pointerEvents: accettato ? 'auto' : 'none', transition: 'all 0.3s' }}>
-        <h3 style={{ color: '#ffcc00', fontSize: '1.5rem' }}>SCEGLI LA TUA STANZA VIDEO</h3>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <button 
+          disabled={!accetto} 
+          onClick={() => avvisoInArrivo("GIOVANI")}
+          style={buttonStyle(true)}
+        >
+          VIDEOCHAT GIOVANI (Musica, Gaming, Amicizie)
+        </button>
         
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap', marginTop: '20px' }}>
-          
-          {/* VIDEOCHAT GIOVANI */}
-          <div style={{ flex: '1', minWidth: '280px', padding: '20px', border: '1px solid #ffcc00', borderRadius: '10px', backgroundColor: 'rgba(255,204,0,0.05)' }}>
-            <h4 style={{ margin: '0 0 10px 0', color: '#ffcc00' }}>VIDEOCHAT GIOVANI (14-17)</h4>
-            <p style={{ fontSize: '0.9rem', marginBottom: '20px', color: '#bbb' }}>
-              Idee, musica, videogiochi ed amicizie. <br/><strong>Ambiente protetto e moderato.</strong>
-            </p>
-            <button 
-              onClick={() => avvisoInArrivo("GIOVANI")}
-              style={{ padding: '15px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold', width: '100%', border: 'none', backgroundColor: '#ffcc00', color: '#111' }}>
-              ENTRA NELLA STANZA GIOVANI
-            </button>
-          </div>
-
-          {/* VIDEOCHAT ADULTI */}
-          <div style={{ flex: '1', minWidth: '280px', padding: '20px', border: '1px solid #444', borderRadius: '10px' }}>
-            <h4 style={{ margin: '0 0 10px 0' }}>VIDEOCHAT ADULTI (18+)</h4>
-            <p style={{ fontSize: '0.9rem', marginBottom: '20px', color: '#bbb' }}>
-              Networking, business e confronto Alpha. <br/><strong>Comportamento scorretto = BAN.</strong>
-            </p>
-            <button 
-              onClick={() => avvisoInArrivo("ADULTI")}
-              style={{ padding: '15px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold', width: '100%', border: 'none', backgroundColor: '#eee', color: '#111' }}>
-              ENTRA NELLA STANZA ADULTI
-            </button>
-          </div>
-
-        </div>
+        <button 
+          disabled={!accetto} 
+          onClick={() => avvisoInArrivo("ADULTI")}
+          style={buttonStyle(false)}
+        >
+          VIDEOCHAT ADULTI (18+)
+        </button>
       </div>
 
-      <p style={{ color: '#444', fontSize: '0.8rem', marginTop: '40px' }}>Security: Islanda Server | Protection: Active Cloudflare Shield</p>
+      <footer style={{ marginTop: '50px', fontSize: '0.8rem', color: '#666' }}>
+        © 2026 MY ALPHA ROOM - SECURITY LAYER ACTIVE
+      </footer>
     </div>
   );
-}
+};
+
+export default App;
