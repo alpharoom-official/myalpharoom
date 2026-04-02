@@ -3,62 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY ALPHA ROOM | BETA</title>
+    <title>MY ALPHA ROOM | COMING SOON</title>
     <style>
-        body { background: #1a1a1a; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; }
-        .logo { color: #ffcc00; font-size: 3.5rem; font-weight: 900; text-shadow: 3px 3px 0 #000; margin-top: 40px; letter-spacing: -1px; }
-        .beta-tag { background: #ff4444; color: white; padding: 3px 12px; font-size: 0.8rem; font-weight: bold; border-radius: 5px; vertical-align: middle; margin-left: 10px; text-shadow: none; }
-        .status-bar { background: #333; color: #00ff00; padding: 8px 25px; border-radius: 30px; font-weight: bold; font-size: 0.9rem; margin: 20px 0; border: 1px solid #444; box-shadow: 0 0 15px rgba(0,255,0,0.2); }
-        .main-box { background: #2a2a2a; border: 1px solid #444; padding: 40px; max-width: 650px; width: 90%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin-top: 20px; }
-        h2 { margin-top: 0; color: #ffcc00; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; }
-        .rules { text-align: left; font-size: 0.9rem; color: #bbb; line-height: 1.6; margin: 25px 0; background: #222; padding: 20px; border-radius: 10px; border-left: 4px solid #ffcc00; }
-        .age-warning { color: #ff4444; font-weight: bold; }
-        .checkbox-container { margin-top: 25px; font-size: 1rem; font-weight: bold; cursor: pointer; display: block; padding: 15px; border: 2px dashed #444; border-radius: 12px; transition: 0.3s; }
-        .checkbox-container:hover { border-color: #ffcc00; background: #333; }
-        input[type="checkbox"] { transform: scale(1.5); margin-right: 15px; cursor: pointer; }
-        .btn-container { margin-top: 35px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-        .btn { padding: 20px 35px; font-size: 1.1rem; font-weight: 800; border-radius: 12px; cursor: pointer; border: none; transition: 0.4s; text-transform: uppercase; width: 260px; }
-        .btn:disabled { opacity: 0.1; cursor: not-allowed; filter: grayscale(1); }
-        .btn-giovani:not(:disabled) { background: #bada55; color: #1a1a1a; box-shadow: 0 0 20px rgba(186, 218, 85, 0.3); }
-        .btn-adulti:not(:disabled) { background: #ff6b6b; color: #ffffff; box-shadow: 0 0 20px rgba(255, 107, 107, 0.3); }
-        .btn:not(:disabled):hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-        footer { margin-top: auto; color: #666; font-size: 0.75rem; padding: 40px 0; letter-spacing: 1px; }
+        body { background: #0a0a0a; color: #ffffff; font-family: 'Arial Black', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        .container { text-align: center; border: 2px solid #ffcc00; padding: 50px; border-radius: 20px; background: rgba(255,204,0,0.05); box-shadow: 0 0 50px rgba(255,204,0,0.1); }
+        .logo { font-size: 4rem; font-weight: 900; color: #ffcc00; text-shadow: 0 0 20px rgba(255,204,0,0.5); margin: 0; letter-spacing: -2px; }
+        .status { background: #ff4444; color: white; padding: 5px 15px; font-size: 1rem; border-radius: 5px; margin-top: 20px; display: inline-block; animation: blink 1s infinite; }
+        h2 { font-size: 1.5rem; color: #888; margin-top: 30px; text-transform: uppercase; }
+        .message { font-family: 'Helvetica', sans-serif; color: #bbb; max-width: 400px; line-height: 1.6; margin: 20px auto; font-style: italic; }
+        .countdown { font-size: 1.2rem; color: #ffcc00; margin-top: 20px; font-weight: bold; border-top: 1px solid #333; padding-top: 20px; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
-    <div class="logo">MY ALPHA ROOM <span class="beta-tag">BETA</span></div>
-    <div class="status-bar">● SYSTEM READY - ENCRYPTED CHANNEL</div>
+    <div class="container">
+        <h1 class="logo">MY ALPHA ROOM</h1>
+        <div class="status">SITO IN COSTRUZIONE</div>
+        
+        <h2>FASE BETA IN ARRIVO</h2>
+        <p class="message">
+            Stiamo trasferendo i sistemi su server proprietari ultra-veloci.<br>
+            Il lancio della versione 1.0 con <strong>Matching Casuale 1vs1</strong> è previsto nei prossimi giorni.
+        </p>
 
-    <div class="main-box">
-        <h2>REGOLE DI ACCESSO</h2>
-        <div class="rules">
-            • <strong>GIOVANI:</strong> Fascia <span class="age-warning">14-17 anni</span> (Richiesto consenso genitori).<br>
-            • <strong>ADULTI:</strong> Vietato ai minori di <span class="age-warning">18 anni</span>.<br>
-            • <strong>SICUREZZA:</strong> Talky cripta la tua connessione. Non mostrare dati sensibili.<br>
-            • <strong>BAN:</strong> Atti osceni o bullismo portano al ban permanente.
-        </div>
-
-        <label class="checkbox-container">
-            <input type="checkbox" id="consent" onchange="toggle()"> DICHIARO LA MIA ETÀ E ACCETTO I TERMINI
-        </label>
-
-        <div class="btn-container">
-            <button id="btn1" class="btn btn-giovani" disabled onclick="window.open('https://talky.io/AlphaRoom-Giovani-2026')">ENTRA: GIOVANI</button>
-            <button id="btn2" class="btn btn-adulti" disabled onclick="window.open('https://talky.io/AlphaRoom-Adulti-2026')">ENTRA: ADULTI</button>
-        </div>
+        <div class="countdown">STAY TUNED. IL POTERE È IN ARRIVO.</div>
     </div>
 
-    <footer>
-        ALPHA PROJECT 2026 - POWERED BY TALKY<br>
-        Lancio Ufficiale: Sabato ore 21:00
+    <footer style="position: absolute; bottom: 20px; color: #444; font-size: 0.8rem;">
+        &copy; 2026 ALPHA ROOM PROJECT - ICELAND SERVERS READY
     </footer>
-
-    <script>
-        function toggle() {
-            const ok = document.getElementById('consent').checked;
-            document.getElementById('btn1').disabled = !ok;
-            document.getElementById('btn2').disabled = !ok;
-        }
-    </script>
 </body>
 </html>
