@@ -1,12 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MY ALPHA ROOM</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY ALPHA ROOM | BETA</title>
+    <style>
+        body { background: #ffffff; color: #333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .beta-tag { background: #ff4444; color: white; padding: 2px 10px; font-size: 0.7rem; font-weight: bold; border-radius: 4px; vertical-align: middle; margin-left: 10px; }
+        .logo { color: #ffcc00; font-size: 3rem; font-weight: 900; text-shadow: 2px 2px 0 #000; margin-top: 30px; }
+        .status-bar { background: #333; color: #00ff00; padding: 5px 20px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; margin: 15px 0; }
+        .main-box { background: #fcfcfc; border: 1px solid #e5e5e5; padding: 30px; max-width: 600px; width: 90%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        h2 { margin-top: 0; color: #444; font-size: 1.2rem; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; }
+        .rules { text-align: left; font-size: 0.85rem; color: #555; line-height: 1.5; margin: 15px 0; }
+        .age-warning { color: #d63031; font-weight: bold; }
+        .checkbox-container { margin-top: 20px; font-size: 0.95rem; font-weight: bold; cursor: pointer; display: block; border: 1px solid #ffcc00; padding: 15px; border-radius: 10px; background: #fffdf5; }
+        input[type="checkbox"] { transform: scale(1.3); margin-right: 10px; }
+        .btn-container { margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 15px 25px; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; border: 2px solid #ccc; transition: 0.3s; text-transform: uppercase; }
+        .btn:disabled { opacity: 0.2; cursor: not-allowed; }
+        .btn-giovani:not(:disabled) { border-color: #bada55; background: #fff; color: #6d8520; }
+        .btn-adulti:not(:disabled) { border-color: #ff6b6b; background: #fff; color: #c0392b; }
+        footer { margin-top: auto; color: #bbb; font-size: 0.7rem; padding: 30px 0; text-align: center; max-width: 500px; }
+    </style>
+</head>
+<body>
+    <div class="logo">MY ALPHA ROOM <span class="beta-tag">BETA</span></div>
+    <div class="status-bar">SYSTEM STATUS: 100% READY</div>
+
+    <div class="main-box">
+        <h2>TERMINI E CONDIZIONI D'USO</h2>
+        <div class="rules">
+            1. <strong>FASCE ETÀ:</strong> L'accesso ai minori <span class="age-warning">(14-17 anni)</span> è consentito esclusivamente sotto la supervisione o con il <span class="age-warning">CONSENSO DEI GENITORI</span>. La sezione Adulti è vietata ai minori.<br><br>
+            2. <strong>SICUREZZA:</strong> My Alpha Room è in fase Beta. Non mostrare dati sensibili o documenti in video. Vietata la nudità e la violenza.<br><br>
+            3. <strong>MODERAZIONE:</strong> Gli utenti che violano le regole o disturbano la community verranno bannati permanentemente tramite ID dispositivo.<br><br>
+            4. <strong>LEGALE:</strong> Accedendo, confermi di aver letto e compreso le responsabilità penali derivanti da usi impropri della piattaforma.
+        </div>
+
+        <label class="checkbox-container">
+            <input type="checkbox" id="consent" onchange="toggle()"> DICHIARO DI AVERE ALMENO 14 ANNI (O CONSENSO GENITORIALE) E ACCETTO I TERMINI
+        </label>
+
+        <div class="btn-container">
+            <button id="btn1" class="btn btn-giovani" disabled onclick="window.open('https://meet.jit.si/AlphaRoom_Chat_Giovani')">CHAT GIOVANI (14-17)</button>
+            <button id="btn2" class="btn btn-adulti" disabled onclick="window.open('https://meet.jit.si/AlphaRoom_Chat_Adulti_18')">CHAT ADULTI (18+)</button>
+        </div>
+    </div>
+
+    <footer>
+        Versione Beta 1.0.5 - Progetto MY ALPHA ROOM<br>
+        Lancio Ufficiale: Sabato ore 21:00. Moderazione attiva durante il lancio.
+    </footer>
+
+    <script>
+        function toggle() {
+            const ok = document.getElementById('consent').checked;
+            document.getElementById('btn1').disabled = !ok;
+            document.getElementById('btn2').disabled = !ok;
+        }
+    </script>
+</body>
 </html>
