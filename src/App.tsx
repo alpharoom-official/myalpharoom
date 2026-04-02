@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const App: React.FC = () => {
+function App() {
   const [accetto, setAccetto] = useState(false);
   const [caricamento, setCaricamento] = useState(0);
 
@@ -11,13 +11,7 @@ const App: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
-    document.addEventListener('contextmenu', handleContextMenu);
-    return () => document.removeEventListener('contextmenu', handleContextMenu);
-  }, []);
-
-  const containerStyle: React.CSSProperties = {
+  const containerStyle: any = {
     backgroundColor: '#050505',
     color: '#fff',
     minHeight: '100vh',
@@ -25,33 +19,24 @@ const App: React.FC = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: 'monospace',
-    padding: '20px',
-    textAlign: 'center',
-    userSelect: 'none'
+    fontFamily: 'sans-serif',
+    textAlign: 'center'
   };
 
   return (
     <div style={containerStyle}>
-      <h1 style={{ color: '#ffcc00', letterSpacing: '5px' }}>MY ALPHA ROOM</h1>
-      <div style={{ color: '#00ff00', marginBottom: '30px' }}>
-        STATUS: {caricamento}% SYSTEMS READY
-      </div>
+      <h1 style={{ color: '#ffcc00' }}>MY ALPHA ROOM</h1>
+      <p style={{ color: '#00ff00' }}>STATUS: {caricamento}%</p>
 
-      <div style={{ backgroundColor: '#111', border: '1px solid #ff0000', padding: '20px', maxWidth: '500px', marginBottom: '30px' }}>
-        <h2 style={{ color: '#ff0000' }}>[ PROTOCOLLO ]</h2>
-        <p style={{ fontSize: '0.8rem', color: '#aaa', textAlign: 'left' }}>
-          > Verificare età minima (18+ o 14+ con tutore)<br/>
-          > Responsabilità civile/penale attiva<br/>
-          > Divieto assoluto di registrazione
+      <div style={{ backgroundColor: '#111', border: '1px solid #ff0000', padding: '20px', margin: '20px' }}>
+        <h2 style={{ color: '#ff0000' }}>REGOLAMENTO</h2>
+        <p style={{ fontSize: '0.8rem', color: '#aaa' }}>
+          Accedendo dichiari di essere maggiorenne e responsabile delle tue azioni.
         </p>
-        
-        <label style={{ cursor: 'pointer', color: accetto ? '#00ff00' : '#fff' }}>
+        <label>
           <input 
             type="checkbox" 
-            checked={accetto} 
             onChange={() => setAccetto(!accetto)} 
-            style={{ marginRight: '10px' }}
           />
           ACCETTO I TERMINI
         </label>
@@ -60,35 +45,21 @@ const App: React.FC = () => {
       <div>
         <button 
           disabled={!accetto} 
-          onClick={() => alert("Lancio previsto: Sabato sera.")}
-          style={{
-            backgroundColor: accetto ? '#ff6600' : '#222',
-            color: '#fff',
-            padding: '10px 20px',
-            border: 'none',
-            margin: '5px',
-            cursor: accetto ? 'pointer' : 'not-allowed'
-          }}
+          onClick={() => alert("Disponibile da Sabato")}
+          style={{ padding: '10px 20px', margin: '5px', backgroundColor: accetto ? '#ff6600' : '#333', color: '#fff', border: 'none' }}
         >
           AREA GIOVANI
         </button>
         <button 
           disabled={!accetto} 
-          onClick={() => alert("Lancio previsto: Sabato sera.")}
-          style={{
-            backgroundColor: accetto ? '#ff0000' : '#222',
-            color: '#fff',
-            padding: '10px 20px',
-            border: 'none',
-            margin: '5px',
-            cursor: accetto ? 'pointer' : 'not-allowed'
-          }}
+          onClick={() => alert("Disponibile da Sabato")}
+          style={{ padding: '10px 20px', margin: '5px', backgroundColor: accetto ? '#ff0000' : '#333', color: '#fff', border: 'none' }}
         >
           AREA ADULTI
         </button>
       </div>
     </div>
   );
-};
+}
 
 export default App;
